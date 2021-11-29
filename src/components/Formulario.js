@@ -10,7 +10,7 @@ const Formulario = ({ crearCita }) => {
     hora: "",
     sintomas: "",
   });
-  // crear nuevo State de error para
+  // crear nuevo State de error paraz
 
   const [error, actualizarError] = useState(false);
 
@@ -31,7 +31,8 @@ const Formulario = ({ crearCita }) => {
       mascota.trim() === "" ||
       propietario.trim() === "" ||
       fecha.trim() === "" ||
-      hora.trim() === ""
+      hora.trim() === "" ||
+      sintomas.trim() === ""
     ) {
       actualizarError(true);
       return;
@@ -46,6 +47,13 @@ const Formulario = ({ crearCita }) => {
     crearCita(cita);
 
     // Reiniciar el formato
+    actualizarCita({
+      mascota: "",
+      propietario: "",
+      fecha: "",
+      hora: "",
+      sintomas: "",
+    });
   };
 
   return (
@@ -53,9 +61,7 @@ const Formulario = ({ crearCita }) => {
       <h1>Crear cita</h1>;
       {error ? (
         <p className="alerta-error">Todos los campos son obligatorios</p>
-      ) : (
-        "null"
-      )}
+      ) : null}
       <form onSubmit={submitCita}>
         <label>Nombre Mascota</label>
         <input
